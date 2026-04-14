@@ -12,7 +12,7 @@ const teams = [
     id: "erste",
     name: "1. Mannschaft",
     league: "Vorarlbergliga",
-    trainer: "Trainer N.N.",
+    trainer: "Bernhard Erkinger",
     description:
       "Die erste Mannschaft des SC Fussach spielt in der Vorarlbergliga und repräsentiert den Verein auf höchstem lokalem Niveau.",
     color: "bg-primary",
