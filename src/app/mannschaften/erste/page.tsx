@@ -131,18 +131,17 @@ export default function ErsteMannschaftPage() {
     <main className="min-h-screen">
 
       {/* Hero mit Mannschaftsfoto */}
-      <section className="relative h-[420px] md:h-[520px] overflow-hidden bg-primary-dark">
-        <Image
-          src="/images/Players/Mannschaftsfoto2026.jpeg"
-          alt="SC Fussach 1. Mannschaft 2026"
-          fill
-          unoptimized
-          priority
-          className="opacity-50"
-          style={{ objectFit: "cover", objectPosition: "center 15%" }}
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/60 to-transparent" />
+      <section
+        className="relative h-[420px] md:h-[520px] overflow-hidden bg-primary-dark"
+        style={{
+          backgroundImage: "url('/images/Players/Mannschaftsfoto2026.jpeg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 15%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-primary-dark/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/40 to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-end container-site pb-10">
           <Link
             href="/mannschaften"
