@@ -138,7 +138,8 @@ export default function ErsteMannschaftPage() {
           fill
           unoptimized
           priority
-          className="object-cover object-top opacity-50"
+          className="opacity-50"
+          style={{ objectFit: "cover", objectPosition: "center 15%" }}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/60 to-transparent" />
