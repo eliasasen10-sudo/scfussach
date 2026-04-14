@@ -131,7 +131,7 @@ export default function ErsteMannschaftPage() {
     <main className="min-h-screen">
 
       {/* Hero mit Mannschaftsfoto */}
-      <section className="relative h-72 md:h-96 overflow-hidden bg-primary-dark">
+      <section className="relative h-[480px] md:h-[580px] overflow-hidden bg-primary-dark">
         <Image
           src="/images/Players/Mannschaftsfoto2026.jpeg"
           alt="SC Fussach 1. Mannschaft 2026"
