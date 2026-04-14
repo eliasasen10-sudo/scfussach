@@ -8,7 +8,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
+type NavLink = {
+  href?: string;
+  label: string;
+  external?: boolean;
+  children?: { href: string; label: string }[];
+};
+
+const navLinks: NavLink[] = [
   { href: "/aktuelles", label: "Aktuelles" },
   { href: "/spielplan", label: "Spielplan" },
   { href: "/verein", label: "Verein" },
