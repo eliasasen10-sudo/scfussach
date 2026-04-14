@@ -2,7 +2,63 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Trophy, MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowLeft, Trophy, MapPin, Calendar, Clock } from "lucide-react";
+import MatchCountdown from "@/components/shared/MatchCountdown";
+
+interface NextMatch {
+  date: string;
+  time?: string;
+  home: string;
+  away: string;
+  homeLogo: string | null;
+  awayLogo: string | null;
+}
+
+function NextMatchCard() {
+  const [match, setMatch] = useState<NextMatch | null>(null);
+
+  useEffect(() => {
+    fetch("/api/fussach")
+      .then(r => r.json())
+      .then(d => {
+        const next = d?.erste?.nextFixtures?.[0];
+        if (next) setMatch(next);
+      })
+      .catch(() => {});
+  }, []);
+
+  if (!match) return null;
+  const isFussachHome = match.home.includes("Fussach");
+  const opponent = isFussachHome ? match.away : match.home;
+  const opponentLogo = isFussachHome ? match.awayLogo : match.homeLogo;
+
+  return (
+    <div className="flex flex-col sm:flex-row items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-4 max-w-xl w-full">
+      <div className="flex items-center gap-3 flex-1 min-w-0">
+        {/* SC Fussach */}
+        <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 p-0.5">
+          <Image src="/images/logos/sc fussach wappen.png" alt="SC Fussach" width={36} height={36} className="object-contain" />
+        </div>
+        <span className="text-white font-bold text-sm truncate">SC Fussach</span>
+        <span className="text-white/40 font-bold text-sm shrink-0">vs</span>
+        {opponentLogo ? (
+          <Image src={opponentLogo} alt={opponent} width={32} height={32} className="object-contain shrink-0" unoptimized />
+        ) : (
+          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 text-white text-xs font-bold">{opponent[0]}</div>
+        )}
+        <span className="text-white font-bold text-sm truncate">{opponent}</span>
+      </div>
+      <div className="flex flex-col items-center gap-1 shrink-0">
+        <div className="flex items-center gap-3 text-white/60 text-xs mb-1">
+          <span className="flex items-center gap-1"><Calendar size={10} />{match.date}</span>
+          {match.time && <span className="flex items-center gap-1"><Clock size={10} />{match.time}</span>}
+        </div>
+        <MatchCountdown dateStr={match.date} timeStr={match.time} variant="banner" />
+      </div>
+    </div>
+  );
+}
 
 const BASE = "/images/Players/";
 
@@ -130,37 +186,53 @@ export default function ErsteMannschaftPage() {
   return (
     <main className="min-h-screen">
 
-      {/* Hero mit Mannschaftsfoto */}
-      <section className="relative h-[480px] md:h-[580px] overflow-hidden bg-primary-dark">
+      {/* Hero – Bodensee-Kickers-Style */}
+      <section className="relative min-h-[580px] md:min-h-[680px] flex flex-col overflow-hidden bg-primary-dark">
+        {/* Mannschaftsfoto */}
         <Image
           src="/images/Players/Mannschaftsfoto2026.jpeg"
           alt="SC Fussach 1. Mannschaft 2026"
           fill
           unoptimized
           priority
-          className="object-cover object-center opacity-50"
+          className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/60 to-transparent" />
-        <div className="absolute inset-0 flex flex-col justify-end container-site pb-10">
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-primary-dark/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/20 to-primary-dark/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/60 via-transparent to-primary-dark/60" />
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col flex-1 container-site py-8">
+          {/* Back link */}
           <Link
             href="/mannschaften"
-            className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm mb-4 transition-colors w-fit"
+            className="inline-flex items-center gap-1.5 text-white/50 hover:text-white text-sm mb-auto transition-colors w-fit"
           >
             <ArrowLeft size={14} />
             Alle Mannschaften
           </Link>
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-xs font-bold tracking-widest uppercase text-white/60">
-              SC Fussach
-            </span>
+
+          {/* Centered club name */}
+          <div className="flex flex-col items-center text-center py-10">
+            <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center p-1.5 shadow-2xl mb-6">
+              <Image src="/images/logos/sc fussach wappen.png" alt="SC Fussach" width={68} height={68} className="object-contain" />
+            </div>
+            <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/50 mb-3">SC Fussach</span>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-none tracking-tight mb-4">
+              1. MANNSCHAFT
+            </h1>
+            <div className="flex items-center gap-4 text-white/60 text-sm">
+              <span className="flex items-center gap-1.5"><Trophy size={13} />Vorarlbergliga</span>
+              <span className="w-1 h-1 rounded-full bg-white/30" />
+              <span className="flex items-center gap-1.5"><MapPin size={13} />Sportanlage Müss</span>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
-            1. Mannschaft
-          </h1>
-          <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-white/70">
-            <span className="flex items-center gap-1.5"><Trophy size={13} /> Vorarlbergliga</span>
-            <span className="flex items-center gap-1.5"><MapPin size={13} /> Sportanlage Müss, Fussach</span>
+
+          {/* Next match countdown */}
+          <div className="flex justify-center pb-2">
+            <NextMatchCard />
           </div>
         </div>
       </section>
