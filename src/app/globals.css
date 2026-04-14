@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* SC Fussach Brand Colors */
+  --color-primary:        #003087;
+  --color-primary-mid:    #0050c8;
+  --color-primary-light:  #e8f0fe;
+  --color-primary-dark:   #001a4f;
+  --color-accent:         #e63329;
+  --color-accent-light:   #fde8e7;
+
+  /* Neutrals */
+  --color-gray-50:  #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* Background / Foreground */
+  --color-background: #ffffff;
+  --color-foreground: #111827;
+  --color-surface:    #f9fafb;
+  --color-border:     #e5e7eb;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-gray-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.container-site {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px)  { .container-site { padding-inline: 1.5rem; } }
+@media (min-width: 1024px) { .container-site { padding-inline: 2rem; } }
+
+.section-padding {
+  padding-block: 5rem;
+}
+
+@media (min-width: 768px) { .section-padding { padding-block: 6rem; } }

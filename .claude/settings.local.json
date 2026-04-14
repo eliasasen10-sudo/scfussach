@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://ticker.ligaportal.at/mannschaft/2136/sc-fussach/spielplan\")",
+      "WebFetch(domain:www.scfussach.at)"
+    ]
+  }
+}

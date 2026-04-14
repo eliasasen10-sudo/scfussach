@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Read(//tmp/**)",
+      "Bash(netstat -ano)",
+      "Bash(start \"\" \"http://localhost:3002\")",
+      "Bash(tasklist /fi \"imagename eq node.exe\")",
+      "Bash(cmd /c \"start \\\\\"SC Fussach Dev\\\\\" cmd /k \\\\\"cd /d \\\\\"c:\\\\Users\\\\elias\\\\Documents\\\\Website scfussach\\\\\" && npm run dev\\\\\"\")",
+      "Bash(powershell -Command \"Start-Process powershell -ArgumentList '-NoExit', '-Command', 'Set-Location ''c:\\\\Users\\\\elias\\\\Documents\\\\Website scfussach''; npm run dev'\")",
+      "Bash(nohup npm:*)",
+      "Bash(echo \"PID: $!\")"
+    ]
+  }
+}
