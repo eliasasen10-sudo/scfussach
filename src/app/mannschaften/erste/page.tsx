@@ -186,53 +186,31 @@ export default function ErsteMannschaftPage() {
   return (
     <main className="min-h-screen">
 
-      {/* Hero – Bodensee-Kickers-Style */}
-      <section className="relative min-h-[580px] md:min-h-[680px] flex flex-col overflow-hidden bg-primary-dark">
-        {/* Mannschaftsfoto */}
+      {/* Hero */}
+      <section className="relative h-72 md:h-96 overflow-hidden bg-primary-dark">
         <Image
           src="/images/Players/Mannschaftsfoto2026.jpeg"
           alt="SC Fussach 1. Mannschaft 2026"
           fill
           unoptimized
           priority
-          className="object-cover object-center"
+          className="object-cover object-center opacity-50"
           sizes="100vw"
         />
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-primary-dark/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/20 to-primary-dark/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/60 via-transparent to-primary-dark/60" />
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col flex-1 container-site py-8">
-          {/* Back link */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/60 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-end container-site pb-10">
           <Link
             href="/mannschaften"
-            className="inline-flex items-center gap-1.5 text-white/50 hover:text-white text-sm mb-auto transition-colors w-fit"
+            className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm mb-4 transition-colors w-fit"
           >
             <ArrowLeft size={14} />
             Alle Mannschaften
           </Link>
-
-          {/* Centered club name */}
-          <div className="flex flex-col items-center text-center py-10">
-            <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center p-1.5 shadow-2xl mb-6">
-              <Image src="/images/logos/sc fussach wappen.png" alt="SC Fussach" width={68} height={68} className="object-contain" />
-            </div>
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/50 mb-3">SC Fussach</span>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-none tracking-tight mb-4">
-              1. MANNSCHAFT
-            </h1>
-            <div className="flex items-center gap-4 text-white/60 text-sm">
-              <span className="flex items-center gap-1.5"><Trophy size={13} />Vorarlbergliga</span>
-              <span className="w-1 h-1 rounded-full bg-white/30" />
-              <span className="flex items-center gap-1.5"><MapPin size={13} />Sportanlage Müss</span>
-            </div>
-          </div>
-
-          {/* Next match countdown */}
-          <div className="flex justify-center pb-2">
-            <NextMatchCard />
+          <span className="text-xs font-bold tracking-widest uppercase text-white/60 mb-2">SC Fussach</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">1. Mannschaft</h1>
+          <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-white/70">
+            <span className="flex items-center gap-1.5"><Trophy size={13} /> Vorarlbergliga</span>
+            <span className="flex items-center gap-1.5"><MapPin size={13} /> Sportanlage Müss, Fussach</span>
           </div>
         </div>
       </section>

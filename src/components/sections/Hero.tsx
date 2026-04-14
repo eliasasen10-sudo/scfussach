@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Calendar, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, Calendar, ChevronDown, Clock, MapPin } from "lucide-react";
+import MatchCountdown from "@/components/shared/MatchCountdown";
 
 function fadeUp(delay: number) {
   return {
@@ -13,35 +15,95 @@ function fadeUp(delay: number) {
   };
 }
 
+interface NextMatch {
+  date: string;
+  time?: string;
+  home: string;
+  away: string;
+  homeLogo: string | null;
+  awayLogo: string | null;
+}
+
+function NextMatchBar() {
+  const [match, setMatch] = useState<NextMatch | null>(null);
+
+  useEffect(() => {
+    fetch("/api/fussach")
+      .then(r => r.json())
+      .then(d => {
+        const next = d?.erste?.nextFixtures?.[0];
+        if (next) setMatch(next);
+      })
+      .catch(() => {});
+  }, []);
+
+  if (!match) return null;
+
+  const isFussachHome = match.home.includes("Fussach");
+  const opponent = isFussachHome ? match.away : match.home;
+  const opponentLogo = isFussachHome ? match.awayLogo : match.homeLogo;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.7, duration: 0.5 }}
+      className="flex flex-col sm:flex-row items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 max-w-2xl w-full mx-auto"
+    >
+      {/* Teams */}
+      <div className="flex items-center gap-3 flex-1 min-w-0 justify-center sm:justify-start">
+        <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center p-0.5 shrink-0">
+          <Image src="/images/logos/sc fussach wappen.png" alt="SC Fussach" width={32} height={32} className="object-contain" />
+        </div>
+        <span className="text-white font-bold text-sm">SC Fussach</span>
+        <span className="text-white/40 font-bold text-xs shrink-0">vs</span>
+        {opponentLogo ? (
+          <Image src={opponentLogo} alt={opponent} width={28} height={28} className="object-contain shrink-0" unoptimized />
+        ) : (
+          <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-white text-xs font-bold shrink-0">{opponent[0]}</div>
+        )}
+        <span className="text-white font-bold text-sm truncate">{opponent}</span>
+      </div>
+
+      {/* Divider */}
+      <div className="hidden sm:block w-px h-10 bg-white/10" />
+
+      {/* Date + Countdown */}
+      <div className="flex flex-col items-center gap-1 shrink-0">
+        <div className="flex items-center gap-3 text-white/50 text-xs">
+          <span className="flex items-center gap-1"><Calendar size={10} />{match.date}</span>
+          {match.time && <span className="flex items-center gap-1"><Clock size={10} />{match.time} Uhr</span>}
+        </div>
+        <MatchCountdown dateStr={match.date} timeStr={match.time} variant="banner" />
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-primary-dark">
-      {/* Real header image as background */}
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-primary-dark">
+
+      {/* Mannschaftsfoto als Hintergrund */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/images/logos/header.jpg"
+          src="/images/Players/Mannschaftsfoto2026.jpeg"
           alt=""
           fill
           priority
-          className="object-cover object-center opacity-30"
+          unoptimized
+          className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Strong dark overlay so text stays readable */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/90 via-primary/80 to-primary-dark/95" />
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-primary-dark/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-primary-dark/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/50 via-transparent to-primary-dark/50" />
       </div>
 
-      {/* Field lines decoration overlay */}
-      <div className="absolute inset-0 overflow-hidden opacity-5" aria-hidden="true">
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] border-2 border-white rounded-3xl"
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 border-2 border-white rounded-full"
-        />
-        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white" />
-      </div>
+      {/* Content */}
+      <div className="relative z-10 flex flex-col flex-1 items-center justify-center container-site text-center py-32">
 
-      <div className="container-site relative z-10 text-center py-32">
         {/* Wappen */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -75,8 +137,7 @@ export default function Hero() {
           {...fadeUp(0.1)}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.0] tracking-tight mb-6"
         >
-          SC{" "}
-          <span>Fussach</span>
+          SC Fussach
         </motion.h1>
 
         <motion.p
@@ -91,7 +152,7 @@ export default function Hero() {
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.3)}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <Link
             href="/aktuelles"
@@ -109,10 +170,13 @@ export default function Hero() {
           </Link>
         </motion.div>
 
+        {/* Next Match Countdown */}
+        <NextMatchBar />
+
         {/* Stats */}
         <motion.div
-          {...fadeUp(0.45)}
-          className="mt-16 grid grid-cols-3 gap-8 max-w-md mx-auto"
+          {...fadeUp(0.5)}
+          className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto"
         >
           {[
             { value: "1946", label: "Gegründet" },
