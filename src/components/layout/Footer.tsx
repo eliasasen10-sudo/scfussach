@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
 
-const footerLinks = {
+const footerLinks: Record<string, { href: string; label: string; external?: boolean }[]> = {
   Verein: [
     { href: "/verein", label: "Über uns" },
     { href: "/verein#vorstand", label: "Vorstand" },
