@@ -73,7 +73,7 @@ const groupStyle: Record<string, { badge: string; dot: string; label: string }> 
 /* ── Daten ──────────────────────────────────────────────────── */
 const staff = [
   { name: "Bernhard Erkinger", role: "Cheftrainer",     img: "BernhardErkingerTrainer.jpeg" },
-  { name: "Stefan Pfanner",    role: "Co-Trainer",      img: "StefanPfannerCoTrainerPose.jpeg" },
+  { name: "Stefan Pfanner",    role: "Co-Trainer",      img: "StefanPfannerCoTrainerNormal.jpeg" },
   { name: "Armin",             role: "Tormanntrainer",  img: "ArminTormantrainerNormal.jpeg" },
   { name: "Christoph Kobleder",role: "Sportl. Leiter",  img: "ChristophKoblederSportlicherLeiterVerteidigungNormal.jpeg" },
 ];
