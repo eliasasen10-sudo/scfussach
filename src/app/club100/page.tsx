@@ -162,14 +162,12 @@ export default function Club100Page() {
               className="group flex flex-col items-center gap-4 bg-gray-50 border border-gray-100 rounded-2xl p-8 hover:border-primary/30 hover:shadow-md transition-all duration-300"
             >
               <div className="w-40 h-20 relative">
-                {/* Sobald funworld.jpg in /images/sponsors/ liegt, wird es hier angezeigt */}
                 <Image
-                  src="/images/sponsors/funworld.jpg"
+                  src="/images/logos/funworldsponsor.png"
                   alt="Funworld Hard"
                   fill
                   className="object-contain"
                   sizes="160px"
-                  onError={() => {}}
                 />
               </div>
               <span className="text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors">
