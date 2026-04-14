@@ -76,15 +76,7 @@ export default function Hero() {
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.0] tracking-tight mb-6"
         >
           SC{" "}
-          <span className="relative inline-block">
-            Fussach
-            <motion.span
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="absolute -bottom-2 left-0 right-0 h-1 bg-accent rounded-full origin-left"
-            />
-          </span>
+          <span>Fussach</span>
         </motion.h1>
 
         <motion.p
