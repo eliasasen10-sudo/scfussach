@@ -91,6 +91,7 @@ const players: Player[] = [
   { name: "Travis Schmid",        position: "Torwart",       group: "Torwarte",   normal: "TravisSchmidTorwartEinserTormannNormal.jpeg",             pose: "TravisSchmidTorwartEinserTormannPose.jpeg" },
   { name: "Laurin Tait",          position: "Torwart",       group: "Torwarte",   normal: "LaurinTaitNormalTormann.jpeg",                            pose: "LaurinTaitTormannPose.jpeg" },
   // Abwehr
+  { name: "Christoph Kobleder",   position: "Verteidiger",   group: "Abwehr",     normal: "ChristophKoblederSportlicherLeiterVerteidigungNormal.jpeg", pose: "ChristophKoblederSportlicherLeiterVerteidigungPose.jpeg" },
   { name: "Fabian Hämmerle",      position: "Verteidiger",   group: "Abwehr",     normal: "FabianHämmerleNormalVerteidger.jpeg",                     pose: "FabianHämmerlePoseVerteidiger.jpeg" },
   { name: "Fabio Huditz",         position: "Verteidiger",   group: "Abwehr",     normal: "FabioHuditzVerteidigerNormal.jpeg",                       pose: "FabioHuditzPoseVerteidiger.jpeg" },
   { name: "Joel Bilgeri",         position: "Verteidiger",   group: "Abwehr",     normal: "JoelBilgeriVerteidigerNormal.jpeg",                       pose: "JoelBilgeriVerteidigerPose.jpeg" },
@@ -163,14 +164,14 @@ function PlayerCard({ player }: { player: Player }) {
 function StaffCard({ member }: { member: typeof staff[0] }) {
   return (
     <div className="flex flex-col items-center gap-3">
-      <div className="relative w-24 h-24 rounded-2xl overflow-hidden ring-2 ring-primary/20 shadow-md">
+      <div className="relative w-36 h-40 rounded-2xl overflow-hidden ring-2 ring-primary/20 shadow-md">
         <Image
           src={BASE + member.img}
           alt={member.name}
           fill
           unoptimized
           className="object-cover object-top"
-          sizes="96px"
+          sizes="144px"
         />
       </div>
       <div className="text-center">
