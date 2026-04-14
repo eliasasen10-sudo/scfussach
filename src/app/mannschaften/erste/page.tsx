@@ -106,7 +106,7 @@ const players: Player[] = [
   { name: "Aleksej Martinovic",   position: "Flügelspieler", group: "Angriff",    normal: "AleksejmartinovicFlügelspielerNormal.jpeg",               pose: "AleksejmartinovicFlügelspielerPose.jpeg" },
   { name: "Alex Asiu",            position: "Flügelspieler", group: "Angriff",    normal: "AlexAsiuNormalFlügelspieler.jpeg",                        pose: "AlexAsiuFlügelspielerPose.jpeg" },
   { name: "Azad",                 position: "Flügelspieler", group: "Angriff",    normal: "AzadFlügelspielerNormal.jpeg",                            pose: "AzadFlügelspielerPose.jpeg" },
-  { name: "David Wachter",        position: "Flügelspieler", group: "Angriff",    normal: "DavidWachterPoseFlügelspieler.jpeg",                      pose: "DavidWachterFlügelspielerPose.jpeg" },
+  { name: "David Wachter",        position: "Flügelspieler", group: "Angriff",    normal: "DavidWachterFlügelspielerPose.jpeg",                      pose: "DavidWachterPoseFlügelspieler.jpeg" },
   { name: "Giuseppe Franchina",   position: "Flügelspieler", group: "Angriff",    normal: "GiuseppeFranchinaFlügelspielerNormal.jpeg",               pose: "GiuseppeFranchinaFlügelspielerPose.jpeg" },
   { name: "Severin Wund",         position: "Flügelspieler", group: "Angriff",    normal: "SeverinWundFlügelspielerNormal.jpeg",                     pose: "SeverinWundFlügelspielerPose.jpeg" },
   { name: "Benedikt Holzer",      position: "Stürmer",       group: "Angriff",    normal: "BenediktHolzerStürmerNormal.jpeg",                        pose: "BenediktHolzerStürmerPose.jpeg" },
