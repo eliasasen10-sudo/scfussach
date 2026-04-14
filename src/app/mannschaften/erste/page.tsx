@@ -118,29 +118,35 @@ const groups = ["Torwarte", "Abwehr", "Mittelfeld", "Angriff"] as const;
 
 /* ── Spieler-Karte ──────────────────────────────────────────── */
 function PlayerCard({ player }: { player: Player }) {
+  const [tapped, setTapped] = useState(false);
   const s = groupStyle[player.group];
   const primarySrc = BASE + (player.normal ?? player.pose);
   const poseSrc    = BASE + player.pose;
+  const showPose   = tapped;
 
   return (
-    <div className="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-default" style={{ aspectRatio: "3/4" }}>
-      {/* Normal image (default visible) */}
+    <div
+      className="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+      style={{ aspectRatio: "3/4" }}
+      onClick={() => player.normal && setTapped(p => !p)}
+    >
+      {/* Normal image */}
       <Image
         src={primarySrc}
         alt={player.name}
         fill
         unoptimized
-        className="object-cover object-top transition-opacity duration-500 group-hover:opacity-0"
+        className={`object-cover object-top transition-opacity duration-500 ${showPose ? "opacity-0" : "opacity-100 group-hover:opacity-0"}`}
         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
       />
-      {/* Pose image (fades in on hover) */}
+      {/* Pose image */}
       {player.normal && (
         <Image
           src={poseSrc}
           alt={player.name}
           fill
           unoptimized
-          className="object-cover object-top transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+          className={`object-cover object-top transition-opacity duration-500 ${showPose ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
       )}
