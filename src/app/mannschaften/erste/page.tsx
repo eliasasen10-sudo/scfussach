@@ -118,19 +118,16 @@ const groups = ["Torwarte", "Abwehr", "Mittelfeld", "Angriff"] as const;
 
 /* ── Spieler-Karte ──────────────────────────────────────────── */
 function PlayerCard({ player }: { player: Player }) {
-  const [pressed, setPressed] = useState(false);
+  const [showPose, setShowPose] = useState(false);
   const s = groupStyle[player.group];
   const primarySrc = BASE + (player.normal ?? player.pose);
   const poseSrc    = BASE + player.pose;
-  const showPose   = pressed;
 
   return (
     <div
       className="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer select-none"
       style={{ aspectRatio: "3/4" }}
-      onTouchStart={() => player.normal && setPressed(true)}
-      onTouchEnd={() => setPressed(false)}
-      onTouchCancel={() => setPressed(false)}
+      onClick={() => player.normal && setShowPose(p => !p)}
     >
       {/* Normal image */}
       <Image
