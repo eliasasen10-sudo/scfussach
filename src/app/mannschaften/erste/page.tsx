@@ -75,7 +75,7 @@ const staff = [
   { name: "Bernhard Erkinger", role: "Cheftrainer",     img: "BernhardErkingerTrainer.jpeg" },
   { name: "Stefan Pfanner",    role: "Co-Trainer",      img: "StefanPfannerCoTrainerPose.jpeg" },
   { name: "Armin",             role: "Tormanntrainer",  img: "ArminTormantrainerNormal.jpeg" },
-  { name: "Christoph Kobleder",role: "Sportl. Leiter",  img: "ChristophKoblederSportlicherLeiterVerteidigungPose.jpeg" },
+  { name: "Christoph Kobleder",role: "Sportl. Leiter",  img: "ChristophKoblederSportlicherLeiterVerteidigungNormal.jpeg" },
 ];
 
 type Player = {
