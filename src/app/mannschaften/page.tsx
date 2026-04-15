@@ -51,7 +51,6 @@ const teams: {
     description:
       "Seit Anfang 2024 decken die Bodensee Kickers den Hobbybereich ab. Wöchentliches Training und ca. 8–12 Spiele pro Jahr in der Hobbyliga – für alle, die Fußball mit weniger Aufwand genießen wollen.",
     color: "bg-amber-600",
-    externalUrl: "https://www.bodensee-kickers.at/",
   },
   {
     id: "altherren",
