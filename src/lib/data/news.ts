@@ -24,15 +24,6 @@ export const newsItems: NewsItem[] = [
     imageUrl: "/images/Players/MarkusSiller.jpg",
   },
   {
-    id: 3,
-    title: "Club100 – Jetzt Fördermitglied werden!",
-    excerpt:
-      "Mit nur 100 Euro im Jahr wirst du Teil unseres exklusiven Förderprogramms. Gutscheine, Tombola-Lose und Zugang zu Exklusiv-Events warten auf dich.",
-    date: "2026-04-08",
-    category: "Vereinsnews",
-    slug: "club100-jetzt-einsteigen",
-  },
-  {
     id: 1,
     title: "Jannik Freestyle kommt nach Fussach!",
     excerpt:
@@ -51,6 +42,15 @@ export const newsItems: NewsItem[] = [
     category: "Veranstaltung",
     slug: "camp2026-anmeldung",
     imageUrl: "/images/logos/camp-logo.png",
+  },
+  {
+    id: 3,
+    title: "Club100 – Jetzt Fördermitglied werden!",
+    excerpt:
+      "Mit nur 100 Euro im Jahr wirst du Teil unseres exklusiven Förderprogramms. Gutscheine, Tombola-Lose und Zugang zu Exklusiv-Events warten auf dich.",
+    date: "2026-03-11",
+    category: "Vereinsnews",
+    slug: "club100-jetzt-einsteigen",
   },
   {
     id: 5,
