@@ -1,6 +1,5 @@
 import Hero from "@/components/sections/Hero";
 import NewsGrid from "@/components/sections/NewsGrid";
-import SponsorGrid from "@/components/sections/SponsorGrid";
 import SponsorTicker from "@/components/sections/SponsorTicker";
 import Club100Section from "@/components/sections/Club100";
 import SpielplanClient from "@/app/spielplan/SpielplanClient";
@@ -25,7 +24,6 @@ export default function HomePage() {
       </section>
 
       <Club100Section />
-      <SponsorGrid />
       <SponsorTicker />
     </main>
   );
