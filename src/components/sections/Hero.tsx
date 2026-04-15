@@ -54,7 +54,7 @@ function NextMatchBanner() {
       </p>
 
       {/* Teams nebeneinander */}
-      <div className="flex items-center justify-center gap-2 mb-3">
+      <div className="flex items-start justify-center gap-2 mb-3">
         <div className="flex flex-col items-center gap-1.5 w-24">
           <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1 shadow-lg shrink-0">
             <Image
@@ -65,10 +65,10 @@ function NextMatchBanner() {
               className="object-contain"
             />
           </div>
-          <span className="text-white font-bold text-xs text-center leading-tight">SC Fussach</span>
+          <span className="text-white font-bold text-xs text-center leading-tight h-8 flex items-center justify-center">SC Fussach</span>
         </div>
 
-        <span className="text-white/30 font-extrabold text-base shrink-0 w-8 text-center">vs</span>
+        <span className="text-white/30 font-extrabold text-base shrink-0 w-8 text-center mt-2">vs</span>
 
         <div className="flex flex-col items-center gap-1.5 w-24">
           <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
@@ -78,7 +78,7 @@ function NextMatchBanner() {
               <span className="text-white font-extrabold text-base">{opponent[0]}</span>
             )}
           </div>
-          <span className="text-white font-bold text-xs text-center leading-tight">{opponent}</span>
+          <span className="text-white font-bold text-xs text-center leading-tight h-8 flex items-center justify-center">{opponent}</span>
         </div>
       </div>
 
