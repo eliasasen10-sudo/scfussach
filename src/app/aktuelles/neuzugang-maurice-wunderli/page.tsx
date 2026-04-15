@@ -66,9 +66,10 @@ export default function WunderliPage() {
                 <Image
                   src="/images/Players/Wunderli.jpg"
                   alt="Maurice Wunderli"
-                  width={300}
-                  height={380}
-                  className="w-full h-auto object-cover object-top"
+                  width={600}
+                  height={900}
+                  className="w-full h-auto"
+                  unoptimized
                 />
               </div>
               {/* Steckbrief */}
