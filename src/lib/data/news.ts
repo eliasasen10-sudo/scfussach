@@ -13,15 +13,6 @@ export const newsItems: NewsItem[] = [
     imageUrl: "/images/news/jannik.png",
   },
   {
-    id: 2,
-    title: "Heimsieg gegen FC Lustenau 07 – Dominante Leistung",
-    excerpt:
-      "Die 1. Mannschaft des SC Fussach gewann ihr Heimspiel gegen FC Lustenau 07 verdient mit 2:1. Beide Treffer fielen in der zweiten Halbzeit.",
-    date: "2026-04-12",
-    category: "Spielbericht",
-    slug: "heimsieg-lustenau-07",
-  },
-  {
     id: 3,
     title: "Club100 – Jetzt Fördermitglied werden!",
     excerpt:
@@ -48,15 +39,6 @@ export const newsItems: NewsItem[] = [
     date: "2026-03-25",
     category: "Vereinsnews",
     slug: "spielplan-rueckrunde-2025-2026",
-  },
-  {
-    id: 6,
-    title: "Unentschieden in Bregenz – Punkt auswärts geholt",
-    excerpt:
-      "Mit einem 0:0 beim FC Bregenz holt die 1. Mannschaft einen wichtigen Auswärtspunkt. Keeper Michael Mayr hielt mit starken Paraden den Kasten sauber.",
-    date: "2026-04-05",
-    category: "Spielbericht",
-    slug: "unentschieden-bregenz",
   },
 ];
 
