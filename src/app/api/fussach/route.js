@@ -1,7 +1,7 @@
 import * as cheerio from "cheerio";
 import { NextResponse } from "next/server";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 const BASE = "https://ticker.ligaportal.at";
 
@@ -16,7 +16,7 @@ async function fetchPage(url) {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
       Accept: "text/html,application/xhtml+xml",
     },
-    next: { revalidate: 86400 },
+    next: { revalidate: 604800 },
   });
   if (!res.ok) throw new Error(`Fetch failed: ${res.status} ${url}`);
   return res.text();
@@ -133,7 +133,7 @@ export async function GET() {
 
     return NextResponse.json(
       { erste, ersteb },
-      { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=600" } }
+      { headers: { "Cache-Control": "public, s-maxage=604800, stale-while-revalidate=600" } }
     );
   } catch (err) {
     console.error("[/api/fussach] Error:", err);
