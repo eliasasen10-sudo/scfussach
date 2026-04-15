@@ -19,7 +19,8 @@ export default function WunderliPage() {
           alt="Maurice Wunderli"
           fill
           priority
-          className="object-cover object-top opacity-50"
+          className="object-cover opacity-50"
+          style={{ objectPosition: "50% 50%" }}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/50 to-transparent" />
