@@ -15,18 +15,20 @@ interface Match {
   matchUrl?: string | null;
 }
 
-function TeamLogo({ src, name }: { src: string | null; name: string }) {
+function TeamLogo({ src, name, size = 14 }: { src: string | null; name: string; size?: number }) {
   const [err, setErr] = useState(false);
+  const cls = `rounded-full bg-white flex items-center justify-center shrink-0 p-1.5 shadow-lg`;
+  const style = { width: size * 4, height: size * 4 };
   if (!src || err) {
     return (
-      <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-xl shrink-0">
+      <div className="rounded-full bg-white/20 flex items-center justify-center shrink-0 text-white font-bold text-xl" style={style}>
         {name[0]}
       </div>
     );
   }
   return (
-    <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shrink-0 p-1.5 shadow-lg">
-      <Image src={src} alt={name} width={48} height={48} className="object-contain" onError={() => setErr(true)} unoptimized />
+    <div className={cls} style={style}>
+      <Image src={src} alt={name} width={size * 3} height={size * 3} className="object-contain" onError={() => setErr(true)} unoptimized />
     </div>
   );
 }
@@ -55,7 +57,7 @@ export default function NextMatchBanner() {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-primary rounded-2xl px-6 py-6 mb-10 max-w-xs mx-auto sm:max-w-sm"
+      className="bg-primary rounded-2xl px-6 py-5 mb-10 w-full"
     >
       {/* Label */}
       <div className="flex items-center justify-center gap-2 mb-4">
@@ -65,33 +67,35 @@ export default function NextMatchBanner() {
         </span>
       </div>
 
-      {/* Icons oben – vs in der Mitte */}
-      <div className="flex items-center justify-center gap-4 mb-2">
-        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center p-1.5 shadow-lg shrink-0">
-          <Image
-            src="/images/logos/sc fussach wappen.png"
-            alt="SC Fussach"
-            width={48}
-            height={48}
-            className="object-contain"
-          />
+      {/* Desktop: horizontal – Mobile: vertikal */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+
+        {/* SC Fussach */}
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+          <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center p-1.5 shadow-lg shrink-0">
+            <Image
+              src="/images/logos/sc fussach wappen.png"
+              alt="SC Fussach"
+              width={44}
+              height={44}
+              className="object-contain"
+            />
+          </div>
+          <span className="text-white font-bold text-sm text-center sm:text-left">SC Fussach</span>
         </div>
 
-        <span className="text-white/40 font-extrabold text-lg w-8 text-center shrink-0">vs</span>
+        {/* VS + Countdown */}
+        <div className="flex flex-col items-center gap-2 shrink-0">
+          <span className="text-white/30 font-extrabold text-xl">vs</span>
+          <MatchCountdown dateStr={match.date} timeStr={match.time} variant="banner" />
+        </div>
 
-        <TeamLogo src={opponentLogo} name={opponent} />
-      </div>
+        {/* Gegner */}
+        <div className="flex flex-col sm:flex-row-reverse items-center gap-2 sm:gap-3">
+          <TeamLogo src={opponentLogo} name={opponent} size={14} />
+          <span className="text-white font-bold text-sm text-center sm:text-right">{opponent}</span>
+        </div>
 
-      {/* Namen unter den Icons */}
-      <div className="flex items-start justify-center gap-4 mb-5">
-        <span className="text-white font-bold text-xs text-center leading-tight w-14">SC Fussach</span>
-        <span className="w-8 shrink-0" />
-        <span className="text-white font-bold text-xs text-center leading-tight w-14">{opponent}</span>
-      </div>
-
-      {/* Countdown ganz unten */}
-      <div className="flex justify-center">
-        <MatchCountdown dateStr={match.date} timeStr={match.time} variant="banner" />
       </div>
     </motion.div>
   );
