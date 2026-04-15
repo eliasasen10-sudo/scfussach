@@ -141,16 +141,16 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col flex-1 items-center justify-center container-site text-center py-28 pb-24">
+      <div className="relative z-10 flex flex-col flex-1 items-center justify-center container-site text-center py-20 sm:py-28">
 
         {/* Wappen */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-6"
+          className="mb-4 sm:mb-6"
         >
-          <div className="mx-auto w-28 h-28 rounded-full bg-white flex items-center justify-center p-2 shadow-2xl">
+          <div className="mx-auto w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-white flex items-center justify-center p-2 shadow-2xl">
             <Image
               src="/images/logos/sc fussach wappen.png"
               alt="SC Fussach Wappen"
@@ -165,7 +165,7 @@ export default function Hero() {
         {/* Badge */}
         <motion.div
           {...fadeUp(0.05)}
-          className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 border border-white/20 rounded-full text-white/80 text-sm font-medium mb-8 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-white/10 border border-white/20 rounded-full text-white/80 text-xs sm:text-sm font-medium mb-4 sm:mb-8 backdrop-blur-sm"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           Saison 2025/2026 – Vorarlbergliga
@@ -174,17 +174,18 @@ export default function Hero() {
         {/* Heading */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.0] tracking-tight mb-6"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.0] tracking-tight mb-3 sm:mb-6"
         >
           SC Fussach
         </motion.h1>
 
+        {/* Beschreibung – auf Handy versteckt */}
         <motion.p
           {...fadeUp(0.2)}
-          className="text-lg sm:text-xl text-white/70 max-w-xl mx-auto mb-10 leading-relaxed"
+          className="hidden sm:block text-lg sm:text-xl text-white/70 max-w-xl mx-auto mb-8 leading-relaxed"
         >
           Leidenschaft, Teamgeist und Heimatliebe seit 1946.
-          <br className="hidden sm:block" />
+          <br />
           Willkommen beim Sportclub aus dem Vorarlberger Rheintal.
         </motion.p>
 
@@ -194,28 +195,28 @@ export default function Hero() {
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.35)}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+          className="flex flex-row items-center justify-center gap-3 mb-6 sm:mb-10"
         >
           <Link
             href="/aktuelles"
-            className="group inline-flex items-center gap-2 px-6 py-3.5 bg-white text-primary font-semibold rounded-xl hover:bg-primary-light transition-all duration-200 text-sm"
+            className="group inline-flex items-center gap-1.5 px-4 py-3 sm:px-6 sm:py-3.5 bg-white text-primary font-semibold rounded-xl hover:bg-primary-light transition-all duration-200 text-xs sm:text-sm"
           >
             Aktuelle News
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
           </Link>
           <Link
             href="/spielplan"
-            className="inline-flex items-center gap-2 px-6 py-3.5 border border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 text-sm backdrop-blur-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-3 sm:px-6 sm:py-3.5 border border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 text-xs sm:text-sm backdrop-blur-sm"
           >
-            <Calendar size={16} />
+            <Calendar size={14} />
             Spielplan
           </Link>
         </motion.div>
 
-        {/* Stats */}
+        {/* Stats – auf Handy versteckt */}
         <motion.div
           {...fadeUp(0.45)}
-          className="grid grid-cols-3 gap-8 max-w-md mx-auto"
+          className="hidden sm:grid grid-cols-3 gap-8 max-w-md mx-auto"
         >
           {[
             { value: "1946", label: "Gegründet" },
