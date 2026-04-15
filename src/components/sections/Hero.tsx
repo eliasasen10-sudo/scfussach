@@ -45,56 +45,75 @@ function NextMatchBanner() {
 
   return (
     <motion.div
-      {...fadeUp(0.6)}
-      className="flex flex-col sm:flex-row items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 max-w-xl w-full mx-auto mt-10"
+      {...fadeUp(0.25)}
+      className="w-full max-w-lg mx-auto mb-10 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-5"
     >
       {/* Label */}
-      <span className="hidden sm:block text-[10px] font-bold tracking-widest uppercase text-white/30 shrink-0">
+      <p className="text-[10px] font-bold tracking-widest uppercase text-white/30 text-center mb-4">
         Nächstes Spiel
-      </span>
+      </p>
 
       {/* Teams */}
-      <div className="flex items-center gap-3 flex-1 min-w-0 justify-center">
-        <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center shrink-0 p-0.5 shadow">
-          <Image
-            src="/images/logos/sc fussach wappen.png"
-            alt="SC Fussach"
-            width={32}
-            height={32}
-            className="object-contain"
-          />
-        </div>
-        <span className="text-white font-bold text-sm truncate">SC Fussach</span>
-        <span className="text-white/30 font-bold text-xs shrink-0">vs</span>
-        {opponentLogo ? (
-          <Image
-            src={opponentLogo}
-            alt={opponent}
-            width={30}
-            height={30}
-            className="object-contain shrink-0 rounded-full"
-            unoptimized
-          />
-        ) : (
-          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 text-white text-xs font-bold">
-            {opponent[0]}
+      <div className="flex items-center justify-between gap-3 mb-4">
+        {/* SC Fussach */}
+        <div className="flex flex-col items-center gap-2 flex-1">
+          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 shadow-lg">
+            <Image
+              src="/images/logos/sc fussach wappen.png"
+              alt="SC Fussach"
+              width={44}
+              height={44}
+              className="object-contain"
+            />
           </div>
-        )}
-        <span className="text-white font-bold text-sm truncate">{opponent}</span>
+          <span className="text-white font-bold text-sm text-center leading-tight">
+            SC Fussach
+          </span>
+        </div>
+
+        {/* VS */}
+        <span className="text-white/30 font-extrabold text-xl shrink-0">vs</span>
+
+        {/* Gegner */}
+        <div className="flex flex-col items-center gap-2 flex-1">
+          <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+            {opponentLogo ? (
+              <Image
+                src={opponentLogo}
+                alt={opponent}
+                width={44}
+                height={44}
+                className="object-contain rounded-full"
+                unoptimized
+              />
+            ) : (
+              <span className="text-white font-extrabold text-xl">
+                {opponent[0]}
+              </span>
+            )}
+          </div>
+          <span className="text-white font-bold text-sm text-center leading-tight">
+            {opponent}
+          </span>
+        </div>
       </div>
 
-      {/* Date + Countdown */}
-      <div className="flex flex-col items-center gap-1.5 shrink-0">
-        <div className="flex items-center gap-2 text-white/40 text-[10px]">
-          <Calendar size={10} />
-          <span>{match.date}</span>
-          {match.time && (
-            <>
-              <Clock size={10} />
-              <span>{match.time}</span>
-            </>
-          )}
-        </div>
+      {/* Datum & Uhrzeit */}
+      <div className="flex items-center justify-center gap-4 mb-3">
+        <span className="flex items-center gap-1.5 text-white/70 text-sm font-semibold">
+          <Calendar size={14} />
+          {match.date}
+        </span>
+        {match.time && (
+          <span className="flex items-center gap-1.5 text-white/70 text-sm font-semibold">
+            <Clock size={14} />
+            {match.time} Uhr
+          </span>
+        )}
+      </div>
+
+      {/* Countdown */}
+      <div className="flex justify-center">
         <MatchCountdown dateStr={match.date} timeStr={match.time} variant="banner" />
       </div>
     </motion.div>
@@ -169,9 +188,12 @@ export default function Hero() {
           Willkommen beim Sportclub aus dem Vorarlberger Rheintal.
         </motion.p>
 
+        {/* Nächstes Spiel – über den Buttons */}
+        <NextMatchBanner />
+
         {/* CTAs */}
         <motion.div
-          {...fadeUp(0.3)}
+          {...fadeUp(0.35)}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
         >
           <Link
@@ -192,7 +214,7 @@ export default function Hero() {
 
         {/* Stats */}
         <motion.div
-          {...fadeUp(0.5)}
+          {...fadeUp(0.45)}
           className="grid grid-cols-3 gap-8 max-w-md mx-auto"
         >
           {[
@@ -206,9 +228,6 @@ export default function Hero() {
             </div>
           ))}
         </motion.div>
-
-        {/* Nächstes Spiel – direkt im Hero sichtbar */}
-        <NextMatchBanner />
       </div>
 
       {/* Scroll indicator */}
