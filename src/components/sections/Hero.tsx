@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Calendar, ChevronDown } from "lucide-react";
+import { ArrowRight, Calendar, ChevronDown, Clock } from "lucide-react";
+import { useEffect, useState } from "react";
+import MatchCountdown from "@/components/shared/MatchCountdown";
 
 function fadeUp(delay: number) {
   return {
@@ -11,6 +13,92 @@ function fadeUp(delay: number) {
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const, delay },
   };
+}
+
+interface NextMatch {
+  date: string;
+  time?: string;
+  home: string;
+  away: string;
+  homeLogo: string | null;
+  awayLogo: string | null;
+}
+
+function NextMatchBanner() {
+  const [match, setMatch] = useState<NextMatch | null>(null);
+
+  useEffect(() => {
+    fetch("/api/fussach")
+      .then((r) => r.json())
+      .then((d) => {
+        const next = d?.erste?.nextFixtures?.[0];
+        if (next) setMatch(next);
+      })
+      .catch(() => {});
+  }, []);
+
+  if (!match) return null;
+
+  const isFussachHome = match.home.includes("Fussach");
+  const opponent = isFussachHome ? match.away : match.home;
+  const opponentLogo = isFussachHome ? match.awayLogo : match.homeLogo;
+
+  return (
+    <motion.div
+      {...fadeUp(0.6)}
+      className="flex flex-col sm:flex-row items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 max-w-xl w-full mx-auto mt-10"
+    >
+      {/* Label */}
+      <span className="hidden sm:block text-[10px] font-bold tracking-widest uppercase text-white/30 shrink-0">
+        Nächstes Spiel
+      </span>
+
+      {/* Teams */}
+      <div className="flex items-center gap-3 flex-1 min-w-0 justify-center">
+        <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center shrink-0 p-0.5 shadow">
+          <Image
+            src="/images/logos/sc fussach wappen.png"
+            alt="SC Fussach"
+            width={32}
+            height={32}
+            className="object-contain"
+          />
+        </div>
+        <span className="text-white font-bold text-sm truncate">SC Fussach</span>
+        <span className="text-white/30 font-bold text-xs shrink-0">vs</span>
+        {opponentLogo ? (
+          <Image
+            src={opponentLogo}
+            alt={opponent}
+            width={30}
+            height={30}
+            className="object-contain shrink-0 rounded-full"
+            unoptimized
+          />
+        ) : (
+          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 text-white text-xs font-bold">
+            {opponent[0]}
+          </div>
+        )}
+        <span className="text-white font-bold text-sm truncate">{opponent}</span>
+      </div>
+
+      {/* Date + Countdown */}
+      <div className="flex flex-col items-center gap-1.5 shrink-0">
+        <div className="flex items-center gap-2 text-white/40 text-[10px]">
+          <Calendar size={10} />
+          <span>{match.date}</span>
+          {match.time && (
+            <>
+              <Clock size={10} />
+              <span>{match.time}</span>
+            </>
+          )}
+        </div>
+        <MatchCountdown dateStr={match.date} timeStr={match.time} variant="banner" />
+      </div>
+    </motion.div>
+  );
 }
 
 export default function Hero() {
@@ -34,7 +122,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col flex-1 items-center justify-center container-site text-center py-32">
+      <div className="relative z-10 flex flex-col flex-1 items-center justify-center container-site text-center py-28 pb-24">
 
         {/* Wappen */}
         <motion.div
@@ -84,7 +172,7 @@ export default function Hero() {
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.3)}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
         >
           <Link
             href="/aktuelles"
@@ -118,6 +206,9 @@ export default function Hero() {
             </div>
           ))}
         </motion.div>
+
+        {/* Nächstes Spiel – direkt im Hero sichtbar */}
+        <NextMatchBanner />
       </div>
 
       {/* Scroll indicator */}
@@ -125,7 +216,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
       >
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <motion.div
