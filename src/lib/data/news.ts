@@ -2,6 +2,26 @@ import type { NewsItem } from "@/lib/types";
 
 export const newsItems: NewsItem[] = [
   {
+    id: 7,
+    title: "Neuzugang: Maurice Wunderli wechselt zum SCF!",
+    excerpt:
+      "Torjäger Maurice Wunderli (28) stürmt ab der Saison 2026/27 für die Erkinger-Elf! Der Stürmer wechselt vom FC Balzers aus dem Fürstentum Liechtenstein zu uns.",
+    date: "2026-04-15",
+    category: "Transfer",
+    slug: "neuzugang-maurice-wunderli",
+    imageUrl: "/images/Players/Wunderli.jpg",
+  },
+  {
+    id: 8,
+    title: "Neuzugang: Markus Siller verstärkt den SCF!",
+    excerpt:
+      "Mit Markus Siller (20) präsentiert der SCF seinen zweiten Neuzugang für 2026/27! Der Offensivspieler wechselt vom FC Lauterach und bringt Erfahrung aus der Regional- und Eliteliga mit.",
+    date: "2026-04-15",
+    category: "Transfer",
+    slug: "neuzugang-markus-siller",
+    imageUrl: "/images/Players/MarkusSiller.jpg",
+  },
+  {
     id: 1,
     title: "Jannik Freestyle kommt nach Fussach!",
     excerpt:
