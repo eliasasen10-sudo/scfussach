@@ -39,6 +39,7 @@ export default function NewsCard({ item, featured = false, index = 0 }: NewsCard
             alt={item.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
+            style={{ objectPosition: item.imagePosition ?? "center" }}
             sizes={featured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
           />
         ) : (

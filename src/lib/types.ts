@@ -20,6 +20,7 @@ export interface NewsItem {
   category: NewsCategory;
   slug: string;
   imageUrl?: string;
+  imagePosition?: string;
   featured?: boolean;
 }
 
