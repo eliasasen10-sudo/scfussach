@@ -9,7 +9,6 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <SponsorTicker />
       <NewsGrid />
 
       {/* Live-Daten */}
@@ -27,6 +26,7 @@ export default function HomePage() {
 
       <Club100Section />
       <SponsorGrid />
+      <SponsorTicker />
     </main>
   );
 }
