@@ -83,10 +83,13 @@ export default function NewsCard({ item, featured = false, index = 0 }: NewsCard
         </p>
 
         {/* Read more */}
-        <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all duration-200">
+        <Link
+          href={`/aktuelles/${item.slug}`}
+          className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all duration-200"
+        >
           Weiterlesen
           <ArrowRight size={14} />
-        </span>
+        </Link>
       </div>
     </motion.article>
   );
