@@ -17,7 +17,7 @@ export const newsItems: NewsItem[] = [
     title: "Neuzugang: Markus Siller verstärkt den SCF!",
     excerpt:
       "Mit Markus Siller (20) präsentiert der SCF seinen zweiten Neuzugang für 2026/27! Der Offensivspieler wechselt vom FC Lauterach und bringt Erfahrung aus der Regional- und Eliteliga mit.",
-    date: "2026-04-15",
+    date: "2026-04-10",
     category: "Transfer",
     slug: "neuzugang-markus-siller",
     imageUrl: "/images/Players/MarkusSiller.jpg",
@@ -27,7 +27,7 @@ export const newsItems: NewsItem[] = [
     title: "Jannik Freestyle kommt nach Fussach!",
     excerpt:
       "Deutschlands Fußball-Freestyler Nr. 1 ist am 7. Juli 2026 zu Gast! In einem 2,5-stündigen Workshop lernst du seine spektakulärsten Tricks – mit Show, Challenges, Autogrammen und Special Guest Lucas Kamps.",
-    date: "2026-07-07",
+    date: "2026-03-15",
     category: "Veranstaltung",
     slug: "workshop-jannik-freestyle",
     featured: true,
