@@ -7,7 +7,15 @@ export const metadata: Metadata = {
   description: "Alle Mannschaften des SC Fussach – von der 1. Mannschaft bis zum Nachwuchs.",
 };
 
-const teams = [
+const teams: {
+  id: string;
+  name: string;
+  league: string;
+  trainer: string;
+  description: string;
+  color: string;
+  externalUrl?: string;
+}[] = [
   {
     id: "erste",
     name: "1. Mannschaft",
@@ -43,6 +51,7 @@ const teams = [
     description:
       "Seit Anfang 2024 decken die Bodensee Kickers den Hobbybereich ab. Wöchentliches Training und ca. 8–12 Spiele pro Jahr in der Hobbyliga – für alle, die Fußball mit weniger Aufwand genießen wollen.",
     color: "bg-amber-600",
+    externalUrl: "https://www.bodensee-kickers.at/",
   },
   {
     id: "altherren",
@@ -78,7 +87,9 @@ export default function MannschaftenPage() {
           {teams.map((team) => (
             <Link
               key={team.id}
-              href={`/mannschaften/${team.id}`}
+              href={team.externalUrl ?? `/mannschaften/${team.id}`}
+              target={team.externalUrl ? "_blank" : undefined}
+              rel={team.externalUrl ? "noopener noreferrer" : undefined}
               className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               {/* Color bar */}
