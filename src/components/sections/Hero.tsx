@@ -3,9 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { ArrowRight, Calendar, ChevronDown, Clock, MapPin } from "lucide-react";
-import MatchCountdown from "@/components/shared/MatchCountdown";
+import { ArrowRight, Calendar, ChevronDown } from "lucide-react";
 
 function fadeUp(delay: number) {
   return {
@@ -13,71 +11,6 @@ function fadeUp(delay: number) {
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const, delay },
   };
-}
-
-interface NextMatch {
-  date: string;
-  time?: string;
-  home: string;
-  away: string;
-  homeLogo: string | null;
-  awayLogo: string | null;
-}
-
-function NextMatchBar() {
-  const [match, setMatch] = useState<NextMatch | null>(null);
-
-  useEffect(() => {
-    fetch("/api/fussach")
-      .then(r => r.json())
-      .then(d => {
-        const next = d?.erste?.nextFixtures?.[0];
-        if (next) setMatch(next);
-      })
-      .catch(() => {});
-  }, []);
-
-  if (!match) return null;
-
-  const isFussachHome = match.home.includes("Fussach");
-  const opponent = isFussachHome ? match.away : match.home;
-  const opponentLogo = isFussachHome ? match.awayLogo : match.homeLogo;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.7, duration: 0.5 }}
-      className="flex flex-col sm:flex-row items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 max-w-2xl w-full mx-auto"
-    >
-      {/* Teams */}
-      <div className="flex items-center gap-3 flex-1 min-w-0 justify-center sm:justify-start">
-        <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center p-0.5 shrink-0">
-          <Image src="/images/logos/sc fussach wappen.png" alt="SC Fussach" width={32} height={32} className="object-contain" />
-        </div>
-        <span className="text-white font-bold text-sm">SC Fussach</span>
-        <span className="text-white/40 font-bold text-xs shrink-0">vs</span>
-        {opponentLogo ? (
-          <Image src={opponentLogo} alt={opponent} width={28} height={28} className="object-contain shrink-0" unoptimized />
-        ) : (
-          <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-white text-xs font-bold shrink-0">{opponent[0]}</div>
-        )}
-        <span className="text-white font-bold text-sm truncate">{opponent}</span>
-      </div>
-
-      {/* Divider */}
-      <div className="hidden sm:block w-px h-10 bg-white/10" />
-
-      {/* Date + Countdown */}
-      <div className="flex flex-col items-center gap-1 shrink-0">
-        <div className="flex items-center gap-3 text-white/50 text-xs">
-          <span className="flex items-center gap-1"><Calendar size={10} />{match.date}</span>
-          {match.time && <span className="flex items-center gap-1"><Clock size={10} />{match.time} Uhr</span>}
-        </div>
-        <MatchCountdown dateStr={match.date} timeStr={match.time} variant="banner" />
-      </div>
-    </motion.div>
-  );
 }
 
 export default function Hero() {
@@ -95,7 +28,6 @@ export default function Hero() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Overlays */}
         <div className="absolute inset-0 bg-primary-dark/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-primary-dark/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/50 via-transparent to-primary-dark/50" />
@@ -170,13 +102,10 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Next Match Countdown */}
-        <NextMatchBar />
-
         {/* Stats */}
         <motion.div
           {...fadeUp(0.5)}
-          className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto"
+          className="grid grid-cols-3 gap-8 max-w-md mx-auto"
         >
           {[
             { value: "1946", label: "Gegründet" },

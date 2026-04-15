@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import NextMatchSection from "@/components/sections/NextMatchSection";
 import NewsGrid from "@/components/sections/NewsGrid";
 import SponsorGrid from "@/components/sections/SponsorGrid";
 import SponsorTicker from "@/components/sections/SponsorTicker";
@@ -9,6 +10,7 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <NextMatchSection />
       <SponsorTicker />
       <NewsGrid />
 
