@@ -33,11 +33,21 @@ export const newsItems: NewsItem[] = [
     slug: "club100-jetzt-einsteigen",
   },
   {
+    id: 1,
+    title: "Jannik Freestyle kommt nach Fussach!",
+    excerpt:
+      "Deutschlands Fußball-Freestyler Nr. 1 ist am 7. Juli 2026 zu Gast! In einem 2,5-stündigen Workshop lernst du seine spektakulärsten Tricks – mit Show, Challenges, Autogrammen und Special Guest Lucas Kamps.",
+    date: "2026-03-15",
+    category: "Veranstaltung",
+    slug: "workshop-jannik-freestyle",
+    imageUrl: "/images/news/jannik.png",
+  },
+  {
     id: 4,
     title: "CAMP2026 – Anmeldung jetzt möglich",
     excerpt:
       "Das Fussacher Fußballcamp geht in die nächste Runde! Vom 14. bis 18. Juli 2026 bieten wir ein professionelles Trainingsprogramm für alle Altersklassen an.",
-    date: "2026-04-05",
+    date: "2026-03-13",
     category: "Veranstaltung",
     slug: "camp2026-anmeldung",
     imageUrl: "/images/logos/camp-logo.png",
@@ -47,19 +57,9 @@ export const newsItems: NewsItem[] = [
     title: "Spielplan Rückrunde 2025/2026 veröffentlicht",
     excerpt:
       "Der vollständige Spielplan für die Rückrunde ist ab sofort verfügbar. Alle Termine im Überblick – jetzt downloaden und eintragen.",
-    date: "2026-03-25",
+    date: "2026-02-03",
     category: "Vereinsnews",
     slug: "spielplan-rueckrunde-2025-2026",
-  },
-  {
-    id: 1,
-    title: "Jannik Freestyle kommt nach Fussach!",
-    excerpt:
-      "Deutschlands Fußball-Freestyler Nr. 1 ist am 7. Juli 2026 zu Gast! In einem 2,5-stündigen Workshop lernst du seine spektakulärsten Tricks – mit Show, Challenges, Autogrammen und Special Guest Lucas Kamps.",
-    date: "2026-03-15",
-    category: "Veranstaltung",
-    slug: "workshop-jannik-freestyle",
-    imageUrl: "/images/news/jannik.png",
   },
 ];
 
