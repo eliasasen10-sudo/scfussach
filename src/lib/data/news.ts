@@ -10,7 +10,7 @@ export const newsItems: NewsItem[] = [
     category: "Transfer",
     slug: "neuzugang-maurice-wunderli",
     imageUrl: "/images/Players/Wunderli.jpg",
-    imagePosition: "50% 35%",
+    imagePosition: "50% 20%",
   },
   {
     id: 8,
