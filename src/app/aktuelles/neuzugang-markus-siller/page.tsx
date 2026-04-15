@@ -14,15 +14,7 @@ export default function SillerPage() {
 
       {/* Hero */}
       <section className="relative h-72 md:h-96 overflow-hidden bg-primary-dark">
-        <Image
-          src="/images/Players/MarkusSiller.jpg"
-          alt="Markus Siller"
-          fill
-          priority
-          className="object-cover object-top opacity-50"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/70 to-primary/50" />
         <div className="absolute inset-0 flex flex-col justify-end container-site pb-10">
           <Link
             href="/aktuelles"
