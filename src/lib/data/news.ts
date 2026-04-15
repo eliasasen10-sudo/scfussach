@@ -9,6 +9,7 @@ export const newsItems: NewsItem[] = [
     date: "2026-04-15",
     category: "Transfer",
     slug: "neuzugang-maurice-wunderli",
+    featured: true,
     imageUrl: "/images/Players/Wunderli.jpg",
     imagePosition: "50% 20%",
   },
@@ -21,17 +22,6 @@ export const newsItems: NewsItem[] = [
     category: "Transfer",
     slug: "neuzugang-markus-siller",
     imageUrl: "/images/Players/MarkusSiller.jpg",
-  },
-  {
-    id: 1,
-    title: "Jannik Freestyle kommt nach Fussach!",
-    excerpt:
-      "Deutschlands Fußball-Freestyler Nr. 1 ist am 7. Juli 2026 zu Gast! In einem 2,5-stündigen Workshop lernst du seine spektakulärsten Tricks – mit Show, Challenges, Autogrammen und Special Guest Lucas Kamps.",
-    date: "2026-03-15",
-    category: "Veranstaltung",
-    slug: "workshop-jannik-freestyle",
-    featured: true,
-    imageUrl: "/images/news/jannik.png",
   },
   {
     id: 3,
@@ -60,6 +50,16 @@ export const newsItems: NewsItem[] = [
     date: "2026-03-25",
     category: "Vereinsnews",
     slug: "spielplan-rueckrunde-2025-2026",
+  },
+  {
+    id: 1,
+    title: "Jannik Freestyle kommt nach Fussach!",
+    excerpt:
+      "Deutschlands Fußball-Freestyler Nr. 1 ist am 7. Juli 2026 zu Gast! In einem 2,5-stündigen Workshop lernst du seine spektakulärsten Tricks – mit Show, Challenges, Autogrammen und Special Guest Lucas Kamps.",
+    date: "2026-03-15",
+    category: "Veranstaltung",
+    slug: "workshop-jannik-freestyle",
+    imageUrl: "/images/news/jannik.png",
   },
 ];
 
