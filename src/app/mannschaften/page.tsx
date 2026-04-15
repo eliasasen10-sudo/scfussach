@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Users } from "lucide-react";
 
@@ -14,6 +15,7 @@ const teams: {
   trainer: string;
   description: string;
   color: string;
+  image?: string;
   externalUrl?: string;
 }[] = [
   {
@@ -24,6 +26,7 @@ const teams: {
     description:
       "Die erste Mannschaft des SC Fussach spielt in der Vorarlbergliga und repräsentiert den Verein auf höchstem lokalem Niveau.",
     color: "bg-primary",
+    image: "/images/Players/Mannschaftsfoto2026.jpeg",
   },
   {
     id: "erste-b",
@@ -33,6 +36,7 @@ const teams: {
     description:
       "Die 1b Mannschaft bildet das Rückgrat des Vereins und bietet Nachwuchsspielern die Chance, sich zu beweisen.",
     color: "bg-primary-mid",
+    image: "/images/Mannschaftsfoto1b.jpg",
   },
   {
     id: "nachwuchs",
@@ -42,6 +46,7 @@ const teams: {
     description:
       "Ca. 50 Kinder trainieren mehrmals die Woche mit Begeisterung. Im Mittelpunkt stehen Spiel, Spaß und viele Ballkontakte – in einem Umfeld das Respekt, Teamgeist und Fairness vermittelt.",
     color: "bg-emerald-600",
+    image: "/images/Kidsscfussach.png",
   },
   {
     id: "bsk",
@@ -95,10 +100,21 @@ export default function MannschaftenPage() {
               <div className={`${team.color} h-2`} />
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <div
-                    className={`w-12 h-12 rounded-xl ${team.color} flex items-center justify-center`}
-                  >
-                    <Users size={20} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
+                    {team.image ? (
+                      <Image
+                        src={team.image}
+                        alt={team.name}
+                        width={48}
+                        height={48}
+                        className="w-full h-full object-cover"
+                        unoptimized
+                      />
+                    ) : (
+                      <div className={`w-full h-full ${team.color} flex items-center justify-center`}>
+                        <Users size={20} className="text-white" />
+                      </div>
+                    )}
                   </div>
                   <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded-lg">
                     {team.league}
