@@ -11,6 +11,9 @@ export default function SponsorTicker() {
 
   return (
     <section className="bg-gray-900 py-8 overflow-hidden border-y border-white/5">
+      <p className="text-center text-xs font-bold tracking-widest uppercase text-white/30 mb-6">
+        Unsere Sponsoren &amp; Partner
+      </p>
       <div className="relative flex">
         <div
           className="flex items-center gap-16 animate-ticker whitespace-nowrap"
