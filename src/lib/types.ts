@@ -22,6 +22,7 @@ export interface NewsItem {
   imageUrl?: string;
   imagePosition?: string;
   imageContain?: boolean;
+  href?: string;
   featured?: boolean;
 }
 

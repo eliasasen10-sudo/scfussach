@@ -79,7 +79,7 @@ function InstagramCard({ post, index }: { post: InstagramPost; index: number }) 
   );
 }
 
-export default function InstagramGrid() {
+export default function InstagramGrid({ limit }: { limit?: number } = {}) {
   const [posts, setPosts] = useState<InstagramPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -88,7 +88,7 @@ export default function InstagramGrid() {
     fetch("/api/instagram")
       .then((r) => r.json())
       .then((d) => {
-        if (d.posts?.length) setPosts(d.posts);
+        if (d.posts?.length) setPosts(limit ? d.posts.slice(0, limit) : d.posts);
         else setError(true);
       })
       .catch(() => setError(true))
@@ -129,8 +129,8 @@ export default function InstagramGrid() {
 
       {/* Grid */}
       {loading ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-          {Array.from({ length: 12 }).map((_, i) => (
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+          {Array.from({ length: limit ?? 12 }).map((_, i) => (
             <div
               key={i}
               className="aspect-square rounded-xl bg-gray-100 animate-pulse"
@@ -138,7 +138,7 @@ export default function InstagramGrid() {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
           {posts.map((post, i) => (
             <InstagramCard key={post.id} post={post} index={i} />
           ))}

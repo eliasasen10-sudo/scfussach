@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import NewsCard from "@/components/shared/NewsCard";
+import InstagramGrid from "@/components/shared/InstagramGrid";
 import { newsItems } from "@/lib/data/news";
 
 export default function NewsGrid() {
-  const featured = newsItems.find((n) => n.featured) ?? newsItems[0];
-  const rest = newsItems.filter((n) => n.id !== featured.id).slice(0, 3);
 
   return (
     <section className="section-padding bg-gray-50" id="aktuelles">
@@ -39,16 +38,11 @@ export default function NewsGrid() {
           </Link>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <NewsCard item={featured} featured index={0} />
-          </div>
-          <div className="flex flex-col gap-4">
-            {rest.map((item, i) => (
-              <NewsCard key={item.id} item={item} index={i + 1} />
-            ))}
-          </div>
+        {/* Grid – 3 in einer Reihe */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {newsItems.map((item, i) => (
+            <NewsCard key={item.id} item={item} index={i} />
+          ))}
         </div>
 
         {/* Mobile CTA */}
@@ -61,6 +55,9 @@ export default function NewsGrid() {
             <ArrowRight size={16} />
           </Link>
         </div>
+
+        {/* Instagram – 6 Posts */}
+        <InstagramGrid limit={6} />
       </div>
     </section>
   );

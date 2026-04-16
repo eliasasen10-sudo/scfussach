@@ -31,6 +31,7 @@ export const newsItems: NewsItem[] = [
     date: "2026-03-11",
     category: "Vereinsnews",
     slug: "club100-jetzt-einsteigen",
+    href: "/club100",
     imageUrl: "/images/DavidClub100.png",
     imagePosition: "50% 30%",
   },

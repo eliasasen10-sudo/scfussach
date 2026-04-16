@@ -77,7 +77,7 @@ export default function NewsCard({ item, featured = false, index = 0 }: NewsCard
             featured ? "text-xl md:text-2xl" : "text-base"
           )}
         >
-          <Link href={`/aktuelles/${item.slug}`}>{item.title}</Link>
+          <Link href={item.href ?? `/aktuelles/${item.slug}`}>{item.title}</Link>
         </h3>
 
         {/* Excerpt */}
@@ -87,7 +87,7 @@ export default function NewsCard({ item, featured = false, index = 0 }: NewsCard
 
         {/* Read more */}
         <Link
-          href={`/aktuelles/${item.slug}`}
+          href={item.href ?? `/aktuelles/${item.slug}`}
           className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all duration-200"
         >
           Weiterlesen

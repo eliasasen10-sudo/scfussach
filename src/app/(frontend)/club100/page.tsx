@@ -59,7 +59,18 @@ export default function Club100Page() {
       {/* Warum Club100 */}
       <section className="section-padding bg-white">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center max-w-5xl mx-auto">
+            {/* David Bild */}
+            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/DavidClub100.png"
+                alt="David – Club100"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+              />
+            </div>
+            <div className="lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-xs font-bold tracking-widest uppercase text-primary mb-2 block">
                 Warum Club100?
@@ -115,6 +126,7 @@ export default function Club100Page() {
                 Jetzt anmelden
               </a>
             </div>
+            </div> {/* lg:col-span-2 */}
           </div>
         </div>
       </section>
