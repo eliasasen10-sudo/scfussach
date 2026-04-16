@@ -22,8 +22,7 @@ export default function NewsCard({ item, featured = false, index = 0 }: NewsCard
       transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
       className={cn(
         "group bg-white rounded-2xl border border-gray-100 overflow-hidden",
-        "hover:shadow-lg hover:-translate-y-1 transition-all duration-300",
-        featured && "md:col-span-2"
+        "hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
       )}
     >
       {/* Image */}
