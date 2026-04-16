@@ -21,6 +21,7 @@ export interface NewsItem {
   slug: string;
   imageUrl?: string;
   imagePosition?: string;
+  imageContain?: boolean;
   featured?: boolean;
 }
 

@@ -10,6 +10,7 @@ export const newsItems: NewsItem[] = [
     category: "Veranstaltung",
     slug: "workshop-jannik-freestyle",
     imageUrl: "/images/news/jannik.png",
+    imagePosition: "50% 20%",
   },
   {
     id: 4,
@@ -20,6 +21,7 @@ export const newsItems: NewsItem[] = [
     category: "Veranstaltung",
     slug: "camp2026-anmeldung",
     imageUrl: "/images/logos/camp-logo.png",
+    imageContain: true,
   },
   {
     id: 3,
