@@ -8,7 +8,8 @@ import { serverFunction } from "./serverFunction";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <RootLayout config={configPromise} importMap={importMap} serverFunction={serverFunction}>
+    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+    <RootLayout config={configPromise} importMap={importMap} serverFunction={serverFunction as any}>
       {children}
     </RootLayout>
   );
