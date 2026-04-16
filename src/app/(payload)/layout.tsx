@@ -6,15 +6,10 @@ import React from "react";
 import { importMap } from "./admin/importMap";
 import { serverFunction } from "./serverFunction";
 
-type Args = {
-  children: React.ReactNode;
-};
-
-export default function Layout({ children }: Args) {
-  return RootLayout({
-    children,
-    config: configPromise,
-    importMap,
-    serverFunction,
-  });
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <RootLayout config={configPromise} importMap={importMap} serverFunction={serverFunction}>
+      {children}
+    </RootLayout>
+  );
 }
