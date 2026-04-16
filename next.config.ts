@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
         hostname: "scfussach.at",
         pathname: "/fileadmin/**",
       },
+      {
+        protocol: "https",
+        hostname: "*.cdninstagram.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.fbcdn.net",
+      },
     ],
   },
 };

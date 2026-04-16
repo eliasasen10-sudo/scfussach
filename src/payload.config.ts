@@ -3,12 +3,12 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
-import { News } from "@/collections/News";
-import { Players } from "@/collections/Players";
-import { Teams } from "@/collections/Teams";
-import { Sponsors } from "@/collections/Sponsors";
-import { Media } from "@/collections/Media";
-import { Users } from "@/collections/Users";
+import { News } from "./collections/News";
+import { Players } from "./collections/Players";
+import { Teams } from "./collections/Teams";
+import { Sponsors } from "./collections/Sponsors";
+import { Media } from "./collections/Media";
+import { Users } from "./collections/Users";
 
 export default buildConfig({
   admin: {
@@ -27,6 +27,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || "",
     },
+    push: true,
   }),
   sharp,
 });

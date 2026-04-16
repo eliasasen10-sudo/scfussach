@@ -49,10 +49,11 @@ export const News: CollectionConfig = {
       },
     },
     {
-      name: "imageUrl",
-      type: "text",
+      name: "image",
+      type: "upload",
+      relationTo: "media",
       admin: {
-        description: "Bild-URL (optional)",
+        description: "Artikelbild hochladen (optional)",
       },
     },
     {

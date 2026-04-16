@@ -14,9 +14,10 @@ export const Sponsors: CollectionConfig = {
     },
     {
       name: "logo",
-      type: "text",
+      type: "upload",
+      relationTo: "media",
       admin: {
-        description: "Logo URL",
+        description: "Sponsor-Logo hochladen",
       },
     },
     {

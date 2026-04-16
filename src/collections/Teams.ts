@@ -40,9 +40,10 @@ export const Teams: CollectionConfig = {
     },
     {
       name: "image",
-      type: "text",
+      type: "upload",
+      relationTo: "media",
       admin: {
-        description: "Mannschaftsfoto URL",
+        description: "Mannschaftsfoto hochladen",
       },
     },
   ],

@@ -4,7 +4,7 @@ export const Players: CollectionConfig = {
   slug: "players",
   admin: {
     useAsTitle: "name",
-    defaultColumns: ["name", "position", "team"],
+    defaultColumns: ["name", "position", "team", "image"],
   },
   fields: [
     {
@@ -37,10 +37,11 @@ export const Players: CollectionConfig = {
       ],
     },
     {
-      name: "imageUrl",
-      type: "text",
+      name: "image",
+      type: "upload",
+      relationTo: "media",
       admin: {
-        description: "Bild-URL des Spielers",
+        description: "Spielerfoto hochladen",
       },
     },
     {

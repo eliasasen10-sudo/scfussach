@@ -2,7 +2,7 @@ import Hero from "@/components/sections/Hero";
 import NewsGrid from "@/components/sections/NewsGrid";
 import SponsorTicker from "@/components/sections/SponsorTicker";
 import Club100Section from "@/components/sections/Club100";
-import SpielplanClient from "@/app/spielplan/SpielplanClient";
+import SpielplanClient from "@/app/(frontend)/spielplan/SpielplanClient";
 
 export default function HomePage() {
   return (
